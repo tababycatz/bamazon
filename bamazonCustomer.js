@@ -11,7 +11,7 @@ var connection = mysql.createConnection({
   user: "root",
 
   // Your password
-  password: "",
+  password: "Generale1605!",
   database: "bamazon_db"
 });
 
@@ -23,8 +23,8 @@ connection.connect(function (err) {
 function selectPurchase() {
 inquirer
   .prompt([{
-    name: "value",
-    type: "input",
+    name: "action",
+    type: "list",
     message: "Welcome to BAmazon, what would you like to purchase?",
     choices: [
       "Apple",
@@ -40,14 +40,28 @@ inquirer
     ]
   },
   {
-    name: "value2",
+    name: "value",
     type: "input",
     message: "How many would you like to purchase?"
   }])
   .then(function (answer) {
+    console.log(answer.action)
     console.log(answer.value)
-    console.log(answer.value2)
-    var newvalue = parseInt(answer.value) + parseInt(answer.value2);
-    console.log(newvalue)
+    confirmPurchase()
   })
+  
+  function confirmPurchase() {
+    inquirer
+      .prompt([{
+        name: "action",
+        type: "confirm",
+        message: "Would that be all?"
+      },
+      {
+        name: "action",
+        type: "print",
+        message: "Your total will be..."
+      }
+    }])
 }
+
