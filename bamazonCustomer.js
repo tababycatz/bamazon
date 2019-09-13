@@ -21,47 +21,60 @@ connection.connect(function (err) {
 });
 
 function selectPurchase() {
-inquirer
-  .prompt([{
-    name: "action",
-    type: "list",
-    message: "Welcome to BAmazon, what would you like to purchase?",
-    choices: [
-      "Apple",
-      "Milk",
-      "Chicken Breast",
-      "Flank Steak",
-      "Eggs",
-      "Brioche Bread",
-      "Chocolate Chip Cookies",
-      "Coca Cola (12 cans)",
-      "Kale",
-      "Garlic"
-    ]
-  },
-  {
-    name: "value",
-    type: "input",
-    message: "How many would you like to purchase?"
-  }])
-  .then(function (answer) {
-    console.log(answer.action)
-    console.log(answer.value)
-    confirmPurchase()
-  })
-  
-  function confirmPurchase() {
-    inquirer
-      .prompt([{
-        name: "action",
-        type: "confirm",
-        message: "Would that be all?"
-      },
-      {
-        name: "action",
-        type: "print",
-        message: "Your total will be..."
-      }
+  inquirer
+    .prompt([{
+      name: "action",
+      type: "list",
+      message: "Welcome to BAmazon, what would you like to purchase?",
+      choices: [
+        "Apple",
+        "Milk",
+        "Chicken Breast",
+        "Flank Steak",
+        "Eggs",
+        "Brioche Bread",
+        "Chocolate Chip Cookies",
+        "Coca Cola (12 cans)",
+        "Kale",
+        "Garlic"
+      ]
+    },
+    {
+      name: "value",
+      type: "input",
+      message: "How many would you like to purchase?"
     }])
+    .then(function (answer) {
+      console.log(answer.action)
+      console.log(answer.value)
+      confirmPurchase()
+    })
 }
 
+function confirmPurchase() {
+  inquirer
+    .prompt([{
+      name: "action",
+      type: "confirm",
+      message: "Would that be all?"
+    }])
+    .then(function (answer) {
+      console.log(answer.action)
+      if (answer.action) {
+        console.log("you're final")
+        // connection.query()
+      }
+});
+
+}
+// function totalPurchase() {
+//   inquirer
+//     .prompt([{
+//       name: "action",
+//       type: "print",
+//       message: "Your total will be"
+//     }])
+//     .then(function (answer) {
+//       // connection.query()
+//     }
+    
