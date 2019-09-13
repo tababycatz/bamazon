@@ -21,6 +21,7 @@ connection.connect(function (err) {
 });
 
 function selectPurchase() {
+  connection.query("SELECT * FROM products", function(err,res) {
   inquirer
     .prompt([{
       name: "action",
@@ -45,9 +46,11 @@ function selectPurchase() {
       message: "How many would you like to purchase?"
     }])
     .then(function (answer) {
-      console.log(answer.action)
-      console.log(answer.value)      
+      console.log(answer.action);
+      console.log(answer.value);    
+      // if (answer.value <   )  
     })
+})
 }
 
 
@@ -81,4 +84,4 @@ function selectPurchase() {
 //     .then(function (answer) {
 //       // connection.query()
 //     }
-    
+
