@@ -47,8 +47,11 @@ function selectPurchase() {
     }])
     .then(function (answer) {
       console.log(answer.action);
-      console.log(answer.value);    
-      // if (answer.value <   )  
+      console.log(answer.value); 
+      for(var i = 0; i < .length; i++) {
+        console.log(res[i])   
+      }
+      // if (answer.value )  
     })
 })
 }
