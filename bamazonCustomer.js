@@ -46,27 +46,31 @@ function selectPurchase() {
     }])
     .then(function (answer) {
       console.log(answer.action)
-      console.log(answer.value)
-      confirmPurchase()
+      console.log(answer.value)      
     })
 }
 
-function confirmPurchase() {
-  inquirer
-    .prompt([{
-      name: "action",
-      type: "confirm",
-      message: "Would that be all?"
-    }])
-    .then(function (answer) {
-      console.log(answer.action)
-      if (answer.action) {
-        console.log("you're final")
-        // connection.query()
-      }
-});
 
-}
+// This is to add up the purchases if you have more than just one type of inventory //
+// function confirmPurchase() {
+//   inquirer
+//     .prompt([{
+//       name: "action",
+//       type: "confirm",
+//       message: "Would that be all?"
+//     }])
+//     .then(function (answer) {
+//       console.log(answer.action)
+//       if (answer.action) {
+//         totalPurchase()
+//       } else {
+//         selectPurchase()
+//       }
+// });
+
+// }
+
+// for(cart.items.length)
 // function totalPurchase() {
 //   inquirer
 //     .prompt([{
