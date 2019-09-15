@@ -43,32 +43,30 @@ function selectPurchase() {
           message: "How many would you like to purchase?"
         }])
         .then(function(answer){
-          // console.log(answer);
+          console.log(answer);
           // customer choices
           var chosenItemName = answer.action.toLowerCase();
           var chosenItemQuantity = answer.value;
           // we can still 'res'(data/table) since we're inside of connection.query({..}) function from line 19 
           // console.log(res);
           // next we need to find the chosenItem(object) inside our products table(array) by looping over response from db
-          var chosenItem
+          var chosenItem;
           for (var i = 0; i < res.length; i++) {
             item = res[i];
             // find the product based on the name of the item customer selected
             if (item.product_name === chosenItemName) {
               chosenItem = item
             }
-          }
+          };
 
-          console.log(chosenItem)
+          console.log(chosenItem);
 
           // check if we have enough stock_quantity in our db
           if (chosenItem.stock_quantity >= chosenItemQuantity) {
             console.log(chosenItemQuantity + ' ' + chosenItem.product_name + ' sold!!!!!!!!!!!!!!!!!!!!!');
-
-            connection.query("UPDATE products SET stock_quantity=" + (res[i].stock_quantity-answer.value) + "'WHERE productname='"+ product + "'", function(err,res){})
-          
-
+            console.log(chosenItem.stock_quantity);
             // if we have enough apples(ie) in stock we should call another function next that would process the order and subtract the quantity from our stock_quantity in db
+            connection.query("UPDATE products SET stock_quantity=" + (chosenItem.stock_quantity - chosenItemQuantity))
             
             // processOrder(chosenItem, chosenItemQuantity)
             // - this function shoudl ping database to update afftected item's stock_quantity
