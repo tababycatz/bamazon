@@ -43,7 +43,7 @@ function selectPurchase() {
           message: "How many would you like to purchase?"
         }])
         .then(function(answer){
-          console.log(answer);
+          // console.log(answer);
           // customer choices
           var chosenItemName = answer.action.toLowerCase();
           var chosenItemQuantity = answer.value;
@@ -65,7 +65,7 @@ function selectPurchase() {
           if (chosenItem.stock_quantity >= chosenItemQuantity) {
             console.log(chosenItemQuantity + ' ' + chosenItem.product_name + ' sold!!!!!!!!!!!!!!!!!!!!!');
 
-            connection.query("UPDATE products SET stock_quantity=" + (res[i].stockquantity-answer.value) + "'WHERE productname='"+ product + "'", function(err,res){})
+            connection.query("UPDATE products SET stock_quantity=" + (res[i].stock_quantity-answer.value) + "'WHERE productname='"+ product + "'", function(err,res){})
           
 
             // if we have enough apples(ie) in stock we should call another function next that would process the order and subtract the quantity from our stock_quantity in db
