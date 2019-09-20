@@ -32,7 +32,7 @@ function selectPurchase() {
           "Eggs",
           "Brioche Bread",
           "Chocolate Chip Cookies",
-          "Coca Cola (12 cans)",
+          "Coca Cola",
           "Kale",
           "Garlic"
         ]
@@ -64,7 +64,7 @@ function selectPurchase() {
           // check if we have enough stock_quantity in our db
           if (chosenItem.stock_quantity >= chosenItemQuantity) {
             console.log(chosenItemQuantity + ' ' + chosenItem.product_name + ' sold!!!!!!!!!!!!!!!!!!!!!');
-            console.log(chosenItem.stock_quantity);
+            console.log(chosenItem.stock_quantity-chosenItemQuantity);
             // if we have enough apples(ie) in stock we should call another function next that would process the order and subtract the quantity from our stock_quantity in db
             connection.query("UPDATE products SET stock_quantity=" + (chosenItem.stock_quantity - chosenItemQuantity))
             
